@@ -7,7 +7,7 @@ def encontrar_plano_amostral (TAMANHO_LOTE, NQA, PTDL, RISCO_FORNECEDOR_MAX, RIS
   status_text = st.empty()
   for tamanho_amostra in range(1, TAMANHO_LOTE + 1):
     for aceitacao_maxima in range(tamanho_amostra + 1):
-      risco_fornecedor = 1 - binom.cdf(aceitacao_maxima, tamanho amostra, NQA)
+      risco_fornecedor = 1 - binom.cdf(aceitacao_maxima, tamanho_amostra, NQA)
       risco_consumidor binom.cdf (aceitacao_maxima, tamanho_amostra, PTDL)
       progresso.progress (tamanho_amostra / TAMANHO_LOTE)
       status_text.text(f' Calculando: (tamanho_amostra}/{TAMANHO_LOTE} amostras, aceitação máxima: {aceitacao_maxima}') 
