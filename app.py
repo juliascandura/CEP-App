@@ -34,4 +34,4 @@ if tamanho_amostra is not None:
   st.write(f'Risco do fornecedor: {risco_fornecedor:.3f}')
   st.write(f'Risco do consumidor: {risco_consumidor:.3f}')
 else:
-  st.write('Nenhum plano amostral encontrado com os parâmetros fornecidos.")
+  st.write("Nenhum plano amostral encontrado com os parâmetros fornecidos.")
