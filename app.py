@@ -10,7 +10,7 @@ def encontrar_plano_amostral (TAMANHO_LOTE, NQA, PTDL, RISCO_FORNECEDOR_MAX, RIS
       risco_fornecedor = 1 - binom.cdf(aceitacao_maxima, tamanho_amostra, NQA)
       risco_consumidor = binom.cdf (aceitacao_maxima, tamanho_amostra, PTDL)
       progresso.progress (tamanho_amostra / TAMANHO_LOTE)
-      status_text.text(f' Calculando: (tamanho_amostra}/{TAMANHO_LOTE} amostras, aceitação máxima: {aceitacao_maxima}') 
+      status_text.text(f' Calculando: {tamanho_amostra}/{TAMANHO_LOTE} amostras, aceitação máxima: {aceitacao_maxima}') 
       if risco_fornecedor <= RISCO_FORNECEDOR_MAX and risco_consumidor <= RISCO_CONSUMIDOR_MAX: 
         return tamanho_amostra, aceitacao_maxima, risco_fornecedor, risco_consumidor
   return None, None, None, None
