@@ -25,7 +25,7 @@ RISCO_CONSUMIDOR_MAX= st.number_input('Risco Cons. Máx:', min_value=0.0, value=
 
 if st.button('Calcular Plano Amostral'):
   tamanho_amostra, aceitacao_maxima, risco_fornecedor, risco_consumidor = encontrar_plano_amostral(
-    TAMANHO LOTE, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX
+    TAMANHO_LOTE, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX
   )
 
 if tamanho_amostra is not None:
