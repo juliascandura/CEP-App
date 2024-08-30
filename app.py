@@ -20,12 +20,12 @@ st.title('Plano Amostral')
 TAMANHO_LOTE = st.number_input('Tamanho do Lote:', min_value=1, value=10000, step=1)
 NQA = st.number_input('NQA:', min_value=0.0, value=0.02, step=0.01, format="%.34")
 PTDL = st.number_input('PTDL:', min_value=0.0, value=0.84, step=0.01, format="%.34")
-RISCO FORNECEDOR_MAX= st.number_input('Risco Fornec. Máx:', min_value=0.0, value=0.100, step=0.01, format="%.34") 
-RISCO CONSUMIDOR_MAX= st.number_input('Risco Cons. Máx:', min_value=0.0, value=0.075, step=0.01, format="%.34")
+RISCO_FORNECEDOR_MAX= st.number_input('Risco Fornec. Máx:', min_value=0.0, value=0.100, step=0.01, format="%.34") 
+RISCO_CONSUMIDOR_MAX= st.number_input('Risco Cons. Máx:', min_value=0.0, value=0.075, step=0.01, format="%.34")
 
 if st.button('Calcular Plano Amostral'):
   tamanho_amostra, aceitacao_maxima, risco_fornecedor, risco_consumidor = encontrar_plano_amostral(
-    TAMANHO LOTE, NQA, PTDL, RISCO FORNECEDOR_MAX, RISCO CONSUMIDOR_MAX
+    TAMANHO LOTE, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX
   )
 
 if tamanho_amostra is not None:
