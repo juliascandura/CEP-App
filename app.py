@@ -1,7 +1,7 @@
 import streamlit as st
 from scipy.stats import binom
 
-def encontrar_plano_amostral (TAMANHO_LOTE, TAMANHO_AMOSTRA, quant_defeituosos, taxa_def_fornecedor, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX):
+def encontrar_plano_amostral (TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX, DESPESA, CUSTO_UNI, LOTES):
   progresso = st.progress(0)
   status_text = st.empty()
   for tamanho_amostra in range(1, TAMANHO_LOTE + 1):
@@ -23,19 +23,19 @@ st.title('Aplicativo WEB')
 
 TAMANHO_LOTE = st.number_input('Tamanho do Lote:')
 TAMANHO_AMOSTRA = st.number_input('Tamanho da amostra:')
-quant_defeituosos = st.number_input('Quantidade máxima de defeituosos:')
-taxa_def_fornecedor = st.number_input('Taxa de defeituosos do fornecedor:', format="%.3f")
+QUANT_DEFEITUOSOS = st.number_input('Quantidade máxima de defeituosos:')
+TAXA_DEF_FORNECEDOR = st.number_input('Taxa de defeituosos do fornecedor:', format="%.3f")
 NQA = st.number_input('NQA:', format="%.3f")
 PTDL = st.number_input('PTDL:', format="%.3f")
 RISCO_FORNECEDOR_MAX= st.number_input('Risco Fornec. Máx:', format="%.3f") 
 RISCO_CONSUMIDOR_MAX= st.number_input('Risco Cons. Máx:', format="%.3f")
-despesa= st.number_input('Despesa por lote reprovado:', min_value=0.0, value=200, step=1)
-custo_uni= st.number_input('Custo unitário de inspeção:', min_value=0.0, value=0.75, step=1)
-lotes= st.number_input('Lotes:', min_value=0.0, value=22)
+DESPESA= st.number_input('Despesa por lote reprovado:', min_value=0.0, value=200, step=1)
+CUSTO_UNI= st.number_input('Custo unitário de inspeção:', min_value=0.0, value=0.75, step=1)
+LOTES= st.number_input('Lotes:', min_value=0.0, value=22)
 
 if st.button('Calcular Riscos e Custos'):
   risco_fornecedor, risco_consumidor = encontrar_plano_amostral(
-    TAMANHO_LOTE, tamanho_amostra, quant_defeituosos, taxa_def_fornecedor, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX
+    TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX, DESPESA, CUSTO_UNI, LOTES
   )
 
   if tamanho_amostra is not None:
