@@ -2,6 +2,7 @@ import streamlit as st
 from scipy.stats import binom
 
 def encontrar_riscos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX):
+  status_text = st.empty()
   risco_fornecedor = 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
   risco_consumidor = binom.cdf (QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)   
   status_text.text(f' Calculando riscos') 
