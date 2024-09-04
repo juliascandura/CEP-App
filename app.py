@@ -1,7 +1,7 @@
 import streamlit as st
 from scipy.stats import binom
 
-def encontrar_plano_amostral (TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX, DESPESA, CUSTO_UNI, LOTES):
+def encontrar_plano_amostral(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX, DESPESA, CUSTO_UNI, LOTES):
   progresso = st.progress(0)
   status_text = st.empty()
   for TAMANHO_AMOSTRA in range(1, TAMANHO_LOTE + 1):
