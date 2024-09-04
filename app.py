@@ -4,15 +4,14 @@ from scipy.stats import binom
 def encontrar_riscos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX):
   progresso = st.progress(0)
   status_text = st.empty()
-  for TAMANHO_AMOSTRA in range(1, TAMANHO_LOTE + 1):
-    for QUANT_DEFEITUOSOS in range(TAMANHO_AMOSTRA + 1):
-      risco_fornecedor = 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
-      risco_consumidor = binom.cdf (QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)   
-      status_text.text(f' Calculando riscos') 
-      if risco_fornecedor <= RISCO_FORNECEDOR_MAX and risco_consumidor <= RISCO_CONSUMIDOR_MAX: 
-        return risco_fornecedor, risco_consumidor
-  return None, None, None, None
-
+  risco_fornecedor = 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
+  risco_consumidor = binom.cdf (QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)   
+  status_text.text(f' Calculando riscos') 
+  if risco_fornecedor <= RISCO_FORNECEDOR_MAX and risco_consumidor <= RISCO_CONSUMIDOR_MAX: 
+    return risco_fornecedor, risco_consumidor
+  else:
+    return None, None
+    
 def encontrar_custos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, DESPESA, CUSTO_UNI, LOTES):
   progresso = st.progress(0)
   status_text = st.empty()
