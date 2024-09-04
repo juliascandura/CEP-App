@@ -16,7 +16,7 @@ def encontrar_plano_amostral(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, T
       progresso.progress (TAMANHO_AMOSTRA / TAMANHO_LOTE)
       status_text.text(f' Calculando') 
       if risco_fornecedor <= RISCO_FORNECEDOR_MAX and risco_consumidor <= RISCO_CONSUMIDOR_MAX: 
-        return aceitacao_maxima, risco_fornecedor, risco_consumidor
+        return risco_fornecedor, risco_consumidor
       return custo_deslocamento, custo_inspecionados, custo_inspecao
   return None, None, None, None
 
