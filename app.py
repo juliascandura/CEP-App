@@ -8,10 +8,10 @@ def encontrar_plano_amostral(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, T
     for QUANT_DEFEITUOSOS in range(TAMANHO_AMOSTRA + 1):
       risco_fornecedor = 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
       risco_consumidor = binom.cdf (QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)
-      PA_def_forn = binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, TAXA_DEF_FORNECEDOR)
-      ITM = QUANT_DEFEITUOSOS + (1-PA_def_forn)*(TAMANHO_LOTE-QUANT_DEFEITUOSOS)
-      custo_inspecionados = LOTES*ITM*CUSTO_UNI
-      custo_deslocamento = LOTES*(1-PA_def_forn)*DESPESA
+      pa_def_forn = binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, TAXA_DEF_FORNECEDOR)
+      itm = QUANT_DEFEITUOSOS + (1-pa_def_forn)*(TAMANHO_LOTE-QUANT_DEFEITUOSOS)
+      custo_inspecionados = LOTES*itm*CUSTO_UNI
+      custo_deslocamento = LOTES*(1-pa_def_forn)*DESPESA
       custo_inspecao = custo_inspecionados + custo_deslocamento    
       progresso.progress (TAMANHO_AMOSTRA / TAMANHO_LOTE)
       status_text.text(f' Calculando') 
