@@ -7,19 +7,12 @@ def encontrar_riscos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, NQA, PTDL
   return risco_fornecedor, risco_consumidor
     
 def encontrar_custos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, DESPESA, CUSTO_UNI, LOTES):
-  progresso = st.progress(0)
-  status_text = st.empty()
-  for TAMANHO_AMOSTRA in range(1, TAMANHO_LOTE + 1):
-    for QUANT_DEFEITUOSOS in range(TAMANHO_AMOSTRA + 1):
-      pa_def_forn = binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, TAXA_DEF_FORNECEDOR)
-      itm = QUANT_DEFEITUOSOS + (1-pa_def_forn)*(TAMANHO_LOTE-QUANT_DEFEITUOSOS)
-      custo_inspecionados = LOTES*itm*CUSTO_UNI
-      custo_deslocamento = LOTES*(1-pa_def_forn)*DESPESA
-      custo_inspecao = custo_inspecionados + custo_deslocamento    
-      status_text.text(f' Calculando custos') 
-      return custo_deslocamento, custo_inspecionados, custo_inspecao
-  return None, None, None, None
-
+  pa_def_forn = binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, TAXA_DEF_FORNECEDOR)
+  itm = QUANT_DEFEITUOSOS + (1-pa_def_forn)*(TAMANHO_LOTE-QUANT_DEFEITUOSOS)
+  custo_inspecionados = LOTES*itm*CUSTO_UNI
+  custo_deslocamento = LOTES*(1-pa_def_forn)*DESPESA
+  custo_inspecao = custo_inspecionados + custo_deslocamento    
+  return custo_deslocamento, custo_inspecionados, custo_inspecao
 
 st.title('Aplicativo WEB')
 
