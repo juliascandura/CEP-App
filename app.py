@@ -8,7 +8,7 @@ def encontrar_plano_amostral(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, T
     for aceitacao_maxima in range(TAMANHO_AMOSTRA + 1):
       risco_fornecedor = 1 - binom.cdf(aceitacao_maxima, TAMANHO_AMOSTRA, NQA)
       risco_consumidor = binom.cdf (aceitacao_maxima, TAMANHO_AMOSTRA, PTDL)
-      PA_def_forn = binom.cdf(a, n, taxa_def_fornecedor)
+      PA_def_forn = binom.cdf(quant_defeituosos, TAMANHO_AMOSTRA, taxa_def_fornecedor)
       ITM = n + (1-PA_def_forn)*(TAMANHO_LOTE-quant_defeituosos)
       custo_inspecionados = lotes*ITM*custo_uni
       custo_deslocamento = lotes*(1-PA_def_forn)*despesa
