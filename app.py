@@ -27,10 +27,10 @@ if st.button('Calcular Plano Amostral'):
     TAMANHO_LOTE, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX
   )
 
-if tamanho_amostra is not None:
-  st.write(f'Tamanho da amostra: {tamanho_amostra}')
-  st.write(f'indice de aceitação máxima: {aceitacao_maxima}')
-  st.write(f'Risco do fornecedor: {risco_fornecedor:.3f}')
-  st.write(f'Risco do consumidor: {risco_consumidor:.3f}')
-else:
-  st.write("Nenhum plano amostral encontrado com os parâmetros fornecidos.")
+  if tamanho_amostra is not None:
+    st.write(f'Tamanho da amostra: {tamanho_amostra}')
+    st.write(f'indice de aceitação máxima: {aceitacao_maxima}')
+    st.write(f'Risco do fornecedor: {risco_fornecedor:.3f}')
+    st.write(f'Risco do consumidor: {risco_consumidor:.3f}')
+  else:
+    st.write("Nenhum plano amostral encontrado com os parâmetros fornecidos.")
