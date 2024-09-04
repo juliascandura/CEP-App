@@ -1,7 +1,7 @@
 import streamlit as st
 from scipy.stats import binom
 
-def encontrar_plano_amostral (TAMANHO_LOTE, tamanho_amostra, quant_defeituosos, taxa_def_fornecedor, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX):
+def encontrar_plano_amostral (TAMANHO_LOTE, TAMANHO_AMOSTRA, quant_defeituosos, taxa_def_fornecedor, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX):
   progresso = st.progress(0)
   status_text = st.empty()
   for tamanho_amostra in range(1, TAMANHO_LOTE + 1):
@@ -22,7 +22,7 @@ def encontrar_plano_amostral (TAMANHO_LOTE, tamanho_amostra, quant_defeituosos, 
 st.title('Aplicativo WEB')
 
 TAMANHO_LOTE = st.number_input('Tamanho do Lote:')
-tamanho_amostra = st.number_input('Tamanho da amostra:')
+TAMANHO_AMOSTRA = st.number_input('Tamanho da amostra:')
 quant_defeituosos = st.number_input('Quantidade máxima de defeituosos:')
 taxa_def_fornecedor = st.number_input('Taxa de defeituosos do fornecedor:', format="%.3f")
 NQA = st.number_input('NQA:', format="%.3f")
