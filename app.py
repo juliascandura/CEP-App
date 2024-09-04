@@ -34,7 +34,7 @@ CUSTO_UNI= st.number_input('Custo unitário de inspeção:', min_value=0.0, valu
 LOTES= st.number_input('Lotes:', min_value=1, value=22, step=1)
 
 if st.button('Calcular Riscos e Custos'):
-  risco_fornecedor, risco_consumidor = encontrar_plano_amostral(
+  risco_fornecedor, risco_consumidor, aceitacao_maxima, custo_deslocamento, custo_inspecionados, custo_inspecao = encontrar_plano_amostral(
     TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX, DESPESA, CUSTO_UNI, LOTES
   )
 
