@@ -30,8 +30,8 @@ PTDL = st.number_input('PTDL:', format="%.3f")
 RISCO_FORNECEDOR_MAX= st.number_input('Risco Fornec. Máx:', format="%.3f") 
 RISCO_CONSUMIDOR_MAX= st.number_input('Risco Cons. Máx:', format="%.3f")
 DESPESA= st.number_input('Despesa por lote reprovado:', min_value=1, value=200, step=1)
-CUSTO_UNI= st.number_input('Custo unitário de inspeção:', min_value=1, value=0.75, step=1)
-LOTES= st.number_input('Lotes:', min_value=0.0, value=22)
+CUSTO_UNI= st.number_input('Custo unitário de inspeção:', min_value=0.0, value=0.75, step=0.01)
+LOTES= st.number_input('Lotes:', min_value=1, value=22, step=1)
 
 if st.button('Calcular Riscos e Custos'):
   risco_fornecedor, risco_consumidor = encontrar_plano_amostral(
