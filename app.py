@@ -1,3 +1,4 @@
+!pip install streamlit
 import streamlit as st
 from scipy.stats import binom
 
