@@ -16,11 +16,11 @@ def encontrar_plano_amostral (TAMANHO_LOTE, NQA, PTDL, RISCO_FORNECEDOR_MAX, RIS
 
 st.title('Plano Amostral')
 
-TAMANHO_LOTE = st.number_input('Tamanho do Lote:', min_value=1, value=10000, step=1)
-NQA = st.number_input('NQA:', min_value=0.0, value=0.02, step=0.01, format="%.3f")
-PTDL = st.number_input('PTDL:', min_value=0.0, value=0.84, step=0.01, format="%.3f")
-RISCO_FORNECEDOR_MAX= st.number_input('Risco Fornec. Máx:', min_value=0.0, value=0.100, step=0.01, format="%.3f") 
-RISCO_CONSUMIDOR_MAX= st.number_input('Risco Cons. Máx:', min_value=0.0, value=0.075, step=0.01, format="%.3f")
+TAMANHO_LOTE = st.number_input('Tamanho do Lote:')
+NQA = st.number_input('NQA:', format="%.3f")
+PTDL = st.number_input('PTDL:', format="%.3f")
+RISCO_FORNECEDOR_MAX= st.number_input('Risco Fornec. Máx:', format="%.3f") 
+RISCO_CONSUMIDOR_MAX= st.number_input('Risco Cons. Máx:', format="%.3f")
 
 if st.button('Calcular Plano Amostral'):
   tamanho_amostra, aceitacao_maxima, risco_fornecedor, risco_consumidor = encontrar_plano_amostral(
