@@ -46,8 +46,13 @@ if st.button('Calcular Riscos'):
   risco_fornecedor, risco_consumidor = encontrar_riscos(
     TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX
   )
-  st.write(f'Risco do fornecedor: {risco_fornecedor:.3f}')
-  st.write(f'Risco do consumidor: {risco_consumidor:.3f}')
+  if not risco_fornecedor is None:
+    st.write(f'Risco do fornecedor: {risco_fornecedor:.3f}')
+    st.write(f'Risco do consumidor: {risco_consumidor:.3f}')
+  else:
+    st.write("Nenhum risco encontrado com os parâmetros fornecidos.")
+
+
 
 if st.button('Calcular Custos'): 
   custo_deslocamento, custo_inspecionados, custo_inspecao = encontrar_custos(
@@ -58,6 +63,5 @@ if st.button('Calcular Custos'):
   st.write(f'Custo de inspeção total: {custo_inspecao:}')
   
 else:
-    st.write("Nenhum risco encontrado com os parâmetros fornecidos.")
     st.write("Nenhum custo encontrado com os parâmetros fornecidos.")
 
