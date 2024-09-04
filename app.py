@@ -8,7 +8,7 @@ def encontrar_riscos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, NQA, PTDL
     for QUANT_DEFEITUOSOS in range(TAMANHO_AMOSTRA + 1):
       risco_fornecedor = 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
       risco_consumidor = binom.cdf (QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)   
-      status_text.text(f' Calculando') 
+      status_text.text(f' Calculando riscos') 
       if risco_fornecedor <= RISCO_FORNECEDOR_MAX and risco_consumidor <= RISCO_CONSUMIDOR_MAX: 
         return risco_fornecedor, risco_consumidor
   return None, None, None, None
@@ -23,7 +23,7 @@ def encontrar_custos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_
       custo_inspecionados = LOTES*itm*CUSTO_UNI
       custo_deslocamento = LOTES*(1-pa_def_forn)*DESPESA
       custo_inspecao = custo_inspecionados + custo_deslocamento    
-      status_text.text(f' Calculando') 
+      status_text.text(f' Calculando custos') 
       return custo_deslocamento, custo_inspecionados, custo_inspecao
   return None, None, None, None
 
@@ -42,12 +42,12 @@ DESPESA= st.number_input('Despesa por lote reprovado:', min_value=1, value=200, 
 CUSTO_UNI= st.number_input('Custo unitário de inspeção:', min_value=0.0, value=0.75, step=0.01)
 LOTES= st.number_input('Lotes:', min_value=1, value=22, step=1)
 
-if st.button('Calcular Riscos e Custos'):
+if st.button('Calcular Riscos'):
   risco_fornecedor, risco_consumidor = encontrar_riscos(
     TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX
   )
 
-if st.button('Calcular Riscos e Custos'): 
+if st.button('Calcular Custos'): 
   custo_deslocamento, custo_inspecionados, custo_inspecao = encontrar_custos(
      TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, DESPESA, CUSTO_UNI, LOTES
    )     
