@@ -46,7 +46,9 @@ if st.button('Calcular Riscos e Custos'):
   risco_fornecedor, risco_consumidor = encontrar_riscos(
     TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, NQA, PTDL, RISCO_FORNECEDOR_MAX, RISCO_CONSUMIDOR_MAX
   )
-   custo_deslocamento, custo_inspecionados, custo_inspecao = encontrar_custos(
+
+if st.button('Calcular Riscos e Custos'): 
+  custo_deslocamento, custo_inspecionados, custo_inspecao = encontrar_custos(
      TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_FORNECEDOR, DESPESA, CUSTO_UNI, LOTES
    )     
 
