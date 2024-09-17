@@ -56,9 +56,9 @@ if st.button('Lote aceito ou não?'):
     QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL
   )
   if pa_nqa <= NQA and pa_ptdl <= PTDL:
-    st.write('O lote foi aceito')
+    st.write('O lote foi aceito :)')
   else:
-    st.write('O lote foi rejeitado')
+    st.write('O lote foi rejeitado :(')
     exit()
 
 
