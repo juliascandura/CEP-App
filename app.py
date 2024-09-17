@@ -14,7 +14,15 @@ def encontrar_custos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_
   custo_inspecao = custo_inspecionados + custo_deslocamento    
   return custo_deslocamento, custo_inspecionados, custo_inspecao
 
-st.title('Aplicativo WEB')
+def aceitar_lote(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL):
+  pa_nqa= 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
+  pa_ptdl= 1- binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)
+    if pa_nqa <= NQA and pa_ptdl <= PTDL:
+      lote_aceito = True
+    else:
+      lote_rejeitado = True
+
+st.title('Aplicativo WEB - Inspeção por Amostragem')
 
 TAMANHO_LOTE = st.number_input('Tamanho do Lote:', min_value=1, step=1)
 TAMANHO_AMOSTRA = st.number_input('Tamanho da amostra:', min_value=1, step=1)
@@ -35,7 +43,6 @@ if st.button('Calcular Riscos'):
   if not risco_fornecedor is None:
     st.write(f'Risco do fornecedor: {risco_fornecedor:.3f}')
     st.write(f'Risco do consumidor: {risco_consumidor:.3f}')
-    exit()
   else:
     st.write("Nenhum risco encontrado com os parâmetros fornecidos.")
   
@@ -47,8 +54,21 @@ if st.button('Calcular Custos'):
   st.write(f'Custo de deslocamento: {custo_deslocamento:}')
   st.write(f'Custo de inspecionados: {custo_inspecionados:}')
   st.write(f'Custo de inspeção total: {custo_inspecao:}')
-  
 else:
     st.write("Nenhum custo encontrado com os parâmetros fornecidos.")
-exit()
 
+
+if st.button('Lote aceito ou não?')]
+  lote_aceito, lote_rejeitado = aceitar_lote(
+    QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL
+  )
+  st.write(f'Lote aceito: {lote_aceito}')
+  st.write(f'Lote rejeitado: {lote_rejeitado}')
+else:
+  exit()
+
+
+
+
+
+  
