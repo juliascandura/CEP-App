@@ -53,7 +53,7 @@ if st.button('Lote aceito ou não?'):
     st.write('O lote foi aceito :)')
   if QUANT_DEFEITUOSOS < ACEITACAO_MAXIMA:
     st.write('O lote foi rejeitado :(')
-   else:
+  else:
     exit()
 
 
