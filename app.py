@@ -18,9 +18,9 @@ def aceitar_lote(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL):
   pa_nqa= 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
   pa_ptdl= 1- binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)
   if pa_nqa <= NQA and pa_ptdl <= PTDL:
-    lote_aceito = True
+    print('O lote foi aceito')
   else:
-    lote_rejeitado = True
+    print('O lote foi rejeitado')
 
 st.title('Aplicativo WEB - Inspeção por Amostragem')
 
@@ -59,11 +59,9 @@ else:
 
 
 if st.button('Lote aceito ou não?'):
-  lote_aceito, lote_rejeitado = aceitar_lote(
+  pa_nqa, pa_ptdl = aceitar_lote(
     QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL
   )
-  st.write(f'Lote aceito: {lote_aceito}')
-  st.write(f'Lote rejeitado: {lote_rejeitado}')
 else:
   exit()
 
