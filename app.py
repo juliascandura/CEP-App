@@ -14,9 +14,6 @@ def encontrar_custos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_
   custo_inspecao = custo_inspecionados + custo_deslocamento    
   return custo_deslocamento, custo_inspecionados, custo_inspecao
 
-def aceitar_lote(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL):
-  pa_nqa = 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
-  return pa_nqa
 
 st.title('Aplicativo WEB - Inspeção por Amostragem')
 
@@ -31,6 +28,7 @@ RISCO_CONSUMIDOR_MAX= st.number_input('Risco Cons. Máx:', min_value=0.0, step=0
 DESPESA= st.number_input('Despesa por lote reprovado:', min_value=1, value=200, step=1)
 CUSTO_UNI= st.number_input('Custo unitário de inspeção:', min_value=0.0, value=0.75, step=0.01)
 LOTES= st.number_input('Lotes:', min_value=1, value=22, step=1)
+ACEITACAO_MAXIMA = st.number_input('Aceitação máxima do lote:', min_value=1, step=1)
 
 if st.button('Calcular Riscos'):
   risco_fornecedor, risco_consumidor = encontrar_riscos(
@@ -51,13 +49,11 @@ if st.button('Calcular Custos'):
   
 
 if st.button('Lote aceito ou não?'):
-  pa_nqa = aceitar_lote(
-    QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL
-  )
-  if pa_nqa <= NQA:
+  if QUANT_DEFEITUOSOS <= ACEITACAO_MAXIMA:
     st.write('O lote foi aceito :)')
-  else:
+  if QUANT_DEFEITUOSOS < ACEITACAO_MAXIMA:
     st.write('O lote foi rejeitado :(')
+   else:
     exit()
 
 
