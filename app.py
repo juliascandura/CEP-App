@@ -58,7 +58,7 @@ else:
     st.write("Nenhum custo encontrado com os parâmetros fornecidos.")
 
 
-if st.button('Lote aceito ou não?')]
+if st.button('Lote aceito ou não?')
   lote_aceito, lote_rejeitado = aceitar_lote(
     QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL
   )
