@@ -37,8 +37,7 @@ if st.button('Calcular Riscos'):
     st.write(f'Risco do consumidor: {risco_consumidor:.3f}')
   else:
     st.write("Nenhum risco encontrado com os parâmetros fornecidos.")
-  exit()
-
+  
 
 if st.button('Calcular Custos'): 
   custo_deslocamento, custo_inspecionados, custo_inspecao = encontrar_custos(
