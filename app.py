@@ -38,7 +38,6 @@ if st.button('Calcular Riscos'):
     exit()
   else:
     st.write("Nenhum risco encontrado com os parâmetros fornecidos.")
-    exit()
   
 
 if st.button('Calcular Custos'): 
