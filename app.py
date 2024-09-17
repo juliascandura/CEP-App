@@ -43,9 +43,7 @@ if st.button('Calcular Riscos'):
   if not risco_fornecedor is None:
     st.write(f'Risco do fornecedor: {risco_fornecedor:.3f}')
     st.write(f'Risco do consumidor: {risco_consumidor:.3f}')
-  else:
-    st.write("Nenhum risco encontrado com os parâmetros fornecidos.")
-  
+    
 
 if st.button('Calcular Custos'): 
   custo_deslocamento, custo_inspecionados, custo_inspecao = encontrar_custos(
@@ -54,14 +52,15 @@ if st.button('Calcular Custos'):
   st.write(f'Custo de deslocamento: {custo_deslocamento:}')
   st.write(f'Custo de inspecionados: {custo_inspecionados:}')
   st.write(f'Custo de inspeção total: {custo_inspecao:}')
-else:
-    st.write("Nenhum custo encontrado com os parâmetros fornecidos.")
-
+  
 
 if st.button('Lote aceito ou não?'):
   pa_nqa, pa_ptdl = aceitar_lote(
     QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL
   )
+  st.write(f'Probabilidade do NQA: {pa_nqa}')
+  st.write(f'Probabilidade do PTDL: {pa_ptdl}')
+
 else:
   exit()
 
