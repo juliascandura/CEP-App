@@ -16,7 +16,7 @@ def encontrar_custos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_
 
 def aceitar_lote(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL):
   pa_nqa = 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
-  pa_ptdl = 1- binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)
+  pa_ptdl = binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)
   return pa_nqa, pa_ptdl
 
 st.title('Aplicativo WEB - Inspeção por Amostragem')
