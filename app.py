@@ -17,10 +17,6 @@ def encontrar_custos(TAMANHO_LOTE, TAMANHO_AMOSTRA, QUANT_DEFEITUOSOS, TAXA_DEF_
 def aceitar_lote(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL):
   pa_nqa= 1 - binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, NQA)
   pa_ptdl= 1- binom.cdf(QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA, PTDL)
-  if pa_nqa <= NQA and pa_ptdl <= PTDL:
-    print('O lote foi aceito')
-  else:
-    print('O lote foi rejeitado')
 
 st.title('Aplicativo WEB - Inspeção por Amostragem')
 
@@ -58,11 +54,11 @@ if st.button('Lote aceito ou não?'):
   pa_nqa, pa_ptdl = aceitar_lote(
     QUANT_DEFEITUOSOS, TAMANHO_AMOSTRA,NQA, PTDL
   )
-  st.write(f'Probabilidade do NQA: {pa_nqa}')
-  st.write(f'Probabilidade do PTDL: {pa_ptdl}')
-
-else:
-  exit()
+    if pa_nqa <= NQA and pa_ptdl <= PTDL:
+      st.write('O lote foi aceito')
+    else:
+      st.write('O lote foi rejeitado')
+      exit()
 
 
 
