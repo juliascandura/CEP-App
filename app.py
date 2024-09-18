@@ -51,10 +51,8 @@ if st.button('Calcular Custos'):
 if st.button('Lote aceito ou não?'):
   if QUANT_DEFEITUOSOS <= ACEITACAO_MAXIMA:
     st.write('O lote foi aceito :)')
-  if QUANT_DEFEITUOSOS < ACEITACAO_MAXIMA:
+  if QUANT_DEFEITUOSOS > ACEITACAO_MAXIMA:
     st.write('O lote foi rejeitado :(')
-  else:
-    exit()
 
 
 
